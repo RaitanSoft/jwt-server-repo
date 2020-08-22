@@ -1,12 +1,8 @@
-﻿using Microsoft.Owin.Security.OAuth;
+﻿using AuthenticationServer.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using AuthenticationServer.Identity;
+using Microsoft.Owin.Security.OAuth;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace AuthenticationServer.Providers
 {
@@ -14,7 +10,7 @@ namespace AuthenticationServer.Providers
     {
         public override async Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            context.Validated();
+            await Task.FromResult(context.Validated());
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
